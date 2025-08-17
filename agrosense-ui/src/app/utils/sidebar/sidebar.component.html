@@ -1,0 +1,13 @@
+<!-- Toggle Button for Mobile -->
+<button class="menu-toggle" (click)="toggleSidebar()">☰</button>
+
+<!-- Sidebar -->
+<nav class="sidebar" [class.active]="isSidebarOpen">
+  <ul>
+    <li><a routerLink="/dashboard">Dashboard</a></li>
+    <li><a routerLink="/crops">Crops</a></li>
+    <li><a routerLink="/farmers">Farmers</a></li>
+    <li><a routerLink="/reports">Reports</a></li>
+    <li><a routerLink="/settings">Settings</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,62 @@
+/* Sidebar base */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #2e7d32; /* green theme */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 60px;
+  transition: transform 0.3s ease;
+}
+
+/* Sidebar links */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+/* Toggle Button (Visible only on mobile) */
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: #2e7d32;
+  cursor: pointer;
+  z-index: 1001;
+  display: none; /* hidden on desktop */
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* hidden */
+  }
+  .sidebar.active {
+    transform: translateX(0); /* visible when active */
+    z-index: 1000;
+  }
+  .menu-toggle {
+    display: block; /* show hamburger on mobile */
+  }
+}

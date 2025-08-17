@@ -1,0 +1,25 @@
+<div class="search-cards">
+
+    <div>
+
+        <div class="card-body">
+
+            <p>Searching results for: {{datastoreService.searchQueryGlobal}}</p>
+            <p> {{searchResults.length}} items found</p>
+
+        </div>
+    </div>
+
+    @for (item of searchResults; track $index) {
+    <div class="card">
+        <div class="card-header">
+            <h5>{{ item.title }}</h5>
+        </div>
+        <div class="card-body">
+            <p>{{ item.value }}</p>
+
+        </div>
+    </div>
+    }
+
+</div>

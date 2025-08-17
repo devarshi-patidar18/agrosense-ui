@@ -1,4 +1,4 @@
-.login-container {
+.signup-container {
   background: url('../../assets/green-farm-tractor-windmill.png') no-repeat center center fixed;
       /* background-image: url('assets/green-farm-tractor-windmill.png'); */
   background-size: cover;
@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.login-card {
+.signup-card {
   background: rgba(255, 255, 255, 0.9); /* Semi-transparent for contrast */
   padding: 40px;
   border-radius: var(--border-radius);
@@ -18,7 +18,7 @@
   text-align: center;
 }
 
-.login-card h2 {
+.signup-card h2 {
   margin-bottom: 20px;
   color: var(--primary-color);
 }
