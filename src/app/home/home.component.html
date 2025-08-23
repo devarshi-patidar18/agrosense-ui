@@ -1,0 +1,94 @@
+<!-- Side Menu -->
+<nav class="side-menu" [class.active]="this.isSideMenuOpen">
+
+  <ul>
+    <p routerLink="/">{{this.datastoreService.loggedInUser?.name}} </p>
+    @for (item of sideMenuItems; track $index) {
+    <li><a (click)="selectedSideBarItem(item.id);this.isSideMenuOpen=false"
+        [class.active]="this.sideMenuItem == item.label">{{item.label}}</a></li>
+    }
+  </ul>
+</nav>
+
+<div class="dashboard-container">
+  <!-- Header -->
+  <header class="navbar">
+    <h1 class="logo">🌱</h1>
+
+    <!-- Search Box -->
+    <div class="search-box">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchQuery"
+        (ngModelChange)="onSearchChange($event)" (click)="onSearchClick()" />
+    </div>
+
+    @if (this.screenWidth>768) {
+    <button class="logout-btn" [routerLink]="datastoreService.isUserLoggedIn ? '/logout' : '/login'">
+      {{datastoreService.isUserLoggedIn ? 'Logout' : 'Login'}}
+    </button>
+    }
+    @else {
+    @if(!this.isSideMenuOpen){
+    <!-- 30x30 close (stroke) -->
+    <svg (click)="openSideMenu()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img"
+      aria-label="Menu">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+
+    }
+
+    }
+  </header>
+
+  <div class="main-layout">
+    <!-- Sidebar (Main Navigation) -->
+    <aside class="sidebar">
+      <nav>
+        <p routerLink="/">{{this.datastoreService.loggedInUser?.name}} </p>
+        @for (item of sideMenuItems; track $index) {
+        @if(item.label != 'Logout'){
+        <a (click)="selectedSideBarItem(item.id)" [class.active]="this.sideMenuItem == item.label">{{item.label}}</a>
+        }
+        }
+      </nav>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="content">
+      @if (this.sideMenuItem == "Dashboard") {
+      <app-dashboard></app-dashboard>
+      }
+      <!-- @if (this.sideMenuItem == "Users") {
+        <app-users></app-users>
+      } -->
+      @else if (this.sideMenuItem == "Labour") {
+      <app-labour></app-labour>
+      }
+      @else if (this.sideMenuItem == "Crops") {
+      <app-crops></app-crops>
+      }
+      @else if (this.sideMenuItem == "Weather") {
+      <app-weather></app-weather>
+      }
+      @else if (this.sideMenuItem == "Reports") {
+      <app-reports></app-reports>
+      }
+      @else if (this.sideMenuItem == "Settings") {
+      <app-settings  (selectedMenueItem)="itemReceived($event)"></app-settings>
+      }
+      @if ((searchQuery != '')) {
+      <!-- search -->
+      <app-searchpage [homeSearchTransaction]="searchQueryEvent"></app-searchpage>
+      <!-- Display search results here -->
+      }
+      <!-- @else {
+        <p class="welcome-message">Welcome to AgroSense! Please select an option from the sidebar.</p>
+      } -->
+
+    </main>
+
+  </div>
+</div>

@@ -1,0 +1,222 @@
+/* General Layout */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  margin: 0;
+}
+
+/* Navbar */
+.navbar {
+  background: #2e7d32;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+
+/* Search Box */
+.search-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 400px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background: #1b5e20;
+  color: white;
+  padding: 20px 10px;
+  overflow-y: auto;
+}
+
+.sidebar nav a {
+  display: block;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #388e3c;
+}
+
+/* Notifications Sidebar */
+.notifications-sidebar {
+  width: 220px;
+  background: #fff8e1;
+  color: #333;
+  border-left: 2px solid #ddd;
+  padding: 15px;
+}
+
+.notifications-sidebar h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.notifications-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notifications-sidebar li {
+  background: #fff;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge */
+.badge {
+  background: #e53935;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 6px;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+
+  /* Logout Button for small screens */
+  .logout-btn {
+    background: white;
+    color: #2e7d32;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    /* width: 10%; */
+  }
+
+  .logout-btn:hover {
+    background: #f0f0f0;
+  }
+
+/* Logout Button for screens above 768px */
+
+  .hamburger-btn {
+    /* background: white; */
+    /* color: #2e7d32; */
+    border: none;
+    /* padding: 8px 15px; */
+    /* border-radius: 4px; */
+    /* font-weight: bold; */
+    cursor: pointer;
+    width: 10%;
+    height: 30px;
+  }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -200px; /* hidden */
+  width: 200px;
+  height: 100%;
+  background: #2e7d32;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu ul li {
+  margin: 15px 0;
+}
+
+.side-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+/* Buttons */
+.hamburger, .close-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  /* width: 200px; */
+  color: white;
+  padding: 10px 5px;
+  overflow-y: auto;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+ul li a:hover,
+ul li a.active {
+  background: #388e3c;
+}
+
+ul p,nav p {
+  color: black;
+  font-weight: bold;
+}

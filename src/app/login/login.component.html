@@ -1,0 +1,28 @@
+<div class="full-center login-container">
+  <div class="login-card">
+    <h2>AgroSense Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <input
+        type="text"
+        placeholder="Username"
+        class="input-field"
+        [(ngModel)]="username"
+        name="username"
+        required
+        autocomplete="username"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        class="input-field"
+        [(ngModel)]="password"
+        name="password"
+        required
+        autocomplete="current-password"
+      />
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p>Don't have an account? <a routerLink="/signup">Signup</a></p>
+    <p routerLink="/"><a>Close</a></p>
+  </div>
+</div>

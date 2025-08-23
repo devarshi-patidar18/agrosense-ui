@@ -1,0 +1,49 @@
+<div class="settings-container">
+  <h2>Settings</h2>
+
+  <!-- Profile Section -->
+  <div class="card">
+    <h3>Profile</h3>
+    <label>
+      Username:
+      <input class="input-field" type="text" [(ngModel)]="username" />
+    </label>
+    <label>
+      Email:
+      <input class="input-field" type="email" [(ngModel)]="email" />
+    </label>
+  </div>
+
+  <!-- Preferences Section -->
+  <div class="card" >
+    <h3>Preferences</h3>
+    <div style="justify-content: center;display: grid;">Notifications
+      <label class="toggle-switch" >
+        <input type="checkbox" class="toggle-input">
+        <span class="slider"></span>
+      </label>
+    <!-- </div> -->
+    <!-- <div style="width: 100px;"> -->
+      Dark Mode
+      <label class="toggle-switch">
+        <input type="checkbox" class="toggle-input" [(ngModel)]="darkMode">
+
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Security Section -->
+  <div class="card">
+    <h3>Security</h3>
+    <div style="justify-content: center;display: grid;gap: 30px;">
+      <button class="btn">Change Password</button>
+      <!-- </div>
+    <div> -->
+      <button class="btn danger">Delete Account</button>
+    </div>
+  </div>
+
+  <!-- Save Button -->
+  <button class="btn primary" (click)="saveSettings()">Save Changes</button>
+</div>
