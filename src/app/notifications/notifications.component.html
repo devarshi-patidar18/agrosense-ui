@@ -1,0 +1,9 @@
+<!-- Sidebar (Notifications) -->
+    <aside class="sidebar notifications-sidebar">
+      <h3>🔔 Notifications <span class="badge">{{ notificationCount }}</span></h3>
+      <ul>
+        @for (note of this.notifications; track $index) {
+          <li >{{ note }}</li>
+        }
+      </ul>
+    </aside>
