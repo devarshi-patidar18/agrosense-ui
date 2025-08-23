@@ -1,1 +1,27 @@
-<p>weather works!</p>
+<div class="weather-card">
+    <h3>Weather Forecast</h3>
+
+
+
+    <div>
+        <!-- Current Weather -->
+        <div class="current-weather">
+            <span class="icon">{{ getWeatherIcon(weatherData.weathercode) }}</span>
+            <div>
+                <h4>{{ weatherData.temperature }}°C</h4>
+                <p>{{ weatherData.windspeed }} km/h wind</p>
+            </div>
+        </div>
+
+        <!-- 7-day Forecast Chart -->
+        <div class="weather-container">
+            <h2>Weather Chart</h2>
+            <canvas id="weather"></canvas>
+        </div>
+    </div>
+
+
+    <!-- @if(!loading && !weatherData){
+    <div class="error">Failed to load weather.</div>
+    } -->
+</div>
