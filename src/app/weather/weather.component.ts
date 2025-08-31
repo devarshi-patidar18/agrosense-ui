@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { registerables } from 'chart.js';
 import { ApiService } from '../services/api.service';
+import { CommonService } from '../services/common-service/common.service';
 Chart.register(...registerables);
 
 interface WeatherData {
@@ -19,7 +20,7 @@ interface WeatherData {
 })
 export class WeatherComponent implements AfterViewInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private commonService: CommonService) { }
 
   ngOnInit() {
     this.fetchWeather();
@@ -29,7 +30,7 @@ export class WeatherComponent implements AfterViewInit {
 
   fetchWeather() {
 
-    this.apiService.fetchWeather("", "").subscribe((data) => {
+    this.commonService.fetchWeather("", "").subscribe((data) => {
       console.log(data);
         this.weatherData = {
           temperature: data.current_weather.temperature,

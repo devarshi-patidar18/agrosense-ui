@@ -21,27 +21,35 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/api/users/me/${userId}`);
   }
 
-  login(credentials: any): Observable<any> {
-    const loginObj = {
-      email: credentials?.email,
-      password: credentials?.password
-    };
-    if (credentials?.email && credentials?.password) {
-      return this.http.post(`${this.baseUrl}/api/auth/login`, loginObj);
-    }
-    else {
-      throw new Error('Invalid login credentials');
-    }
+  // login(credentials: any): Observable<any> {
+  //   const loginObj = {
+  //     email: credentials?.email,
+  //     password: credentials?.password
+  //   };
+  //   if (credentials?.email && credentials?.password) {
+  //     return this.http.post(`${this.baseUrl}/api/auth/login`, loginObj);
+  //   }
+  //   else {
+  //     throw new Error('Invalid login credentials');
+  //   }
+  // }
+
+  login(credentials:any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/auth/login`, credentials);
   }
 
-  fetchLatLong(city:string){
-    return this.http.get<any>("./assets/Lat-long.json");
+  setToken(token: string) {
+    localStorage.setItem('jwtToken', token);
   }
 
-  fetchWeather(lat:string,long:string): Observable<any> {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=28.6139&longitude=77.2090&current_weather=true&daily=temperature_2m_max,weathercode&timezone=auto`;
-
-    return this.http.get<any>(url);
+  getToken(): string | null {
+    return localStorage.getItem('jwtToken');
   }
-}
+
+  logout() {
+    localStorage.removeItem('jwtToken');
+  }
+
   
+}
+
