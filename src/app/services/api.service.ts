@@ -9,7 +9,8 @@ import { environment } from '../../environments/environment';
 })
 export class ApiService {
 
-  private baseUrl = environment.apiUrl;
+  // private baseUrl = environment.apiUrl;
+  private baseUrl = 'https://user-service-hcpl.onrender.com';
 
   constructor(private http: HttpClient) { }
 
