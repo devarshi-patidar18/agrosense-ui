@@ -1,1 +1,61 @@
-<p>crops works!</p>
+<div class="crops-container">
+    <div class="header">
+        <h2>Crop Management</h2>
+        <button class="add-btn" (click)="addCrop()">
+            <i class="fas fa-plus"></i> Add New Crop
+        </button>
+    </div>
+
+    <div class="crops-grid">
+        @for (crop of crops; track crop.id) {
+        <div class="crop-card">
+            <div class="crop-image">
+                <img [src]="crop.imageUrl" [alt]="crop.name">
+            </div>
+            <div class="crop-content">
+                <h3>{{ crop.name }}</h3>
+                <div class="crop-details">
+                    <p><strong>Type:</strong> {{ crop.type }}</p>
+                    <p><strong>Season:</strong> {{ crop.season }}</p>
+                    <p><strong>Yield:</strong> {{ crop.yield }} tons/hectare</p>
+                </div>
+                <div class="crop-actions">
+                    <button class="view-btn" (click)="viewCropDetails(crop)">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="edit-btn" (click)="editCrop(crop)">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="delete-btn" (click)="deleteCrop(crop.id)">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Crop Details Modal -->
+    @if (selectedCrop) {
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>{{ selectedCrop.name }} Details</h3>
+                <button class="close-btn" (click)="closeModal()">×</button>
+            </div>
+            <div class="modal-content">
+                <img [src]="selectedCrop.imageUrl" [alt]="selectedCrop.name">
+                <div class="detail-grid">
+                    <p><strong>Type:</strong> {{ selectedCrop.type }}</p>
+                    <p><strong>Season:</strong> {{ selectedCrop.season }}</p>
+                    <p><strong>Duration:</strong> {{ selectedCrop.duration }}</p>
+                    <p><strong>Yield:</strong> {{ selectedCrop.yield }} tons/hectare</p>
+                    <p><strong>Water Requirement:</strong> {{ selectedCrop.waterRequirement }}</p>
+                    <p><strong>Soil Type:</strong> {{ selectedCrop.soilType }}</p>
+                </div>
+                <p class="description">{{ selectedCrop.description }}</p>
+            </div>
+        </div>
+    </div>
+    }
+</div>

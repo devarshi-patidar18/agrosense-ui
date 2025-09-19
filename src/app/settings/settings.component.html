@@ -1,0 +1,129 @@
+<div class="settings-container">
+    <h2>Settings</h2>
+
+    <div class="settings-tabs">
+        <button 
+            [class.active]="activeTab === 'general'"
+            (click)="switchTab('general')">
+            <i class="fas fa-cog"></i> General
+        </button>
+        <button 
+            [class.active]="activeTab === 'notifications'"
+            (click)="switchTab('notifications')">
+            <i class="fas fa-bell"></i> Notifications
+        </button>
+        <button 
+            [class.active]="activeTab === 'account'"
+            (click)="switchTab('account')">
+            <i class="fas fa-user"></i> Account
+        </button>
+    </div>
+
+    <div class="settings-content">
+        <!-- General Settings -->
+        <div *ngIf="activeTab === 'general'" class="settings-section">
+            <h3>General Preferences</h3>
+            <div class="preferences-form">
+                <div class="form-group">
+                    <label>Language</label>
+                    <select [(ngModel)]="userPreferences.language">
+                        <option *ngFor="let lang of languages">{{lang}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Date Format</label>
+                    <select [(ngModel)]="userPreferences.dateFormat">
+                        <option *ngFor="let format of dateFormats">{{format}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Measurement Unit</label>
+                    <select [(ngModel)]="userPreferences.measurementUnit">
+                        <option *ngFor="let unit of measurementUnits">{{unit}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Currency</label>
+                    <select [(ngModel)]="userPreferences.currency">
+                        <option *ngFor="let currency of currencies">{{currency}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Time Zone</label>
+                    <select [(ngModel)]="userPreferences.timezone">
+                        <option *ngFor="let timezone of timezones">{{timezone}}</option>
+                    </select>
+                </div>
+
+                <button class="save-btn" (click)="savePreferences()">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div *ngIf="activeTab === 'notifications'" class="settings-section">
+            <h3>Notification Preferences</h3>
+            <div class="notification-settings">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Notification Type</th>
+                            <th>Email</th>
+                            <th>SMS</th>
+                            <th>Push</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let setting of notificationSettings">
+                            <td>{{setting.type}}</td>
+                            <td>
+                                <input type="checkbox" [(ngModel)]="setting.email">
+                            </td>
+                            <td>
+                                <input type="checkbox" [(ngModel)]="setting.sms">
+                            </td>
+                            <td>
+                                <input type="checkbox" [(ngModel)]="setting.push">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="save-btn" (click)="saveNotifications()">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </div>
+
+        <!-- Account Settings -->
+        <div *ngIf="activeTab === 'account'" class="settings-section">
+            <h3>Account Settings</h3>
+            <div class="account-settings">
+                <div class="form-group">
+                    <label>Profile Picture</label>
+                    <div class="profile-upload">
+                        <img src="assets/images/default-profile.png" alt="Profile">
+                        <button class="upload-btn">
+                            <i class="fas fa-upload"></i> Upload New Picture
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Change Password</label>
+                    <input type="password" placeholder="Current Password">
+                    <input type="password" placeholder="New Password">
+                    <input type="password" placeholder="Confirm New Password">
+                </div>
+
+                <button class="save-btn">
+                    <i class="fas fa-save"></i> Update Account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

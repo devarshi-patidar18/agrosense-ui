@@ -1,1 +1,59 @@
-<p>labour works!</p>
+<div class="container">
+    <h2>Agricultural Labour Directory</h2>
+    
+    @if (loading) {
+    <div class="loading">Loading labour details...</div>
+    }
+
+    <div class="labour-grid">
+        @for (labour of labourList; track labour.id) {
+        <div class="labour-card">
+            <div class="labour-header">
+                <h3>{{ labour.name }}</h3>
+                <span [class]="labour.availability ? 'status available' : 'status unavailable'">
+                    {{ labour.availability ? 'Available' : 'Unavailable' }}
+                </span>
+            </div>
+            <div class="labour-info">
+                <p><strong>Experience:</strong> {{ labour.experience }} years</p>
+                <p><strong>Daily Wage:</strong> ₹{{ labour.dailyWage }}</p>
+                <p><strong>Location:</strong> {{ labour.location }}</p>
+                <div class="skills">
+                    <strong>Skills:</strong>
+                    <div class="skill-tags">
+                        @for (skill of labour.skills; track skill) {
+                        <span class="skill-tag">{{ skill }}</span>
+                        }
+                    </div>
+                </div>
+                <button (click)="viewDetails(labour)" class="view-btn">View Details</button>
+            </div>
+        </div>
+        }
+    </div>
+
+    @if (selectedLabour) {
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>{{ selectedLabour.name }}</h3>
+                <button class="close-btn" (click)="closeDetails()">×</button>
+            </div>
+            <div class="modal-content">
+                <p><strong>Contact:</strong> {{ selectedLabour.contact }}</p>
+                <p><strong>Experience:</strong> {{ selectedLabour.experience }} years</p>
+                <p><strong>Daily Wage:</strong> ₹{{ selectedLabour.dailyWage }}</p>
+                <p><strong>Location:</strong> {{ selectedLabour.location }}</p>
+                <div class="skills">
+                    <strong>Skills:</strong>
+                    <div class="skill-tags">
+                        @for (skill of selectedLabour.skills; track skill) {
+                        <span class="skill-tag">{{ skill }}</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

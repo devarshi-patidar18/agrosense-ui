@@ -12,11 +12,12 @@ import { Router, RouterLink } from '@angular/router';
 import { routes } from '../app.routes';
 import { SettingsComponent } from "../utils/settings/settings.component";
 import { LoaderService } from '../services/loader-service/loader.service';
+import { UsersComponent } from "../users/users.component";
 
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormsModule, DashboardComponent, LabourComponent, CropsComponent,
-    WeatherComponent, ReportsComponent, RouterLink, SearchpageComponent, SettingsComponent],
+    WeatherComponent, ReportsComponent, RouterLink, SearchpageComponent, SettingsComponent, UsersComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
